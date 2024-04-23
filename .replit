@@ -1,0 +1,9 @@
+language = "c"
+
+run = "./a.out"
+
+[nix]
+channel = "stable-23_11"
+
+[deployment]
+run = ["sh", "-c", "cowsay Configure me!"]
