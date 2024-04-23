@@ -145,11 +145,6 @@ void delete_ele(struct node* head, int ele){
 
   if( head==NULL ) return ;
 
-  if( head->next == NULL) {
-    head = NULL ;
-    return;
-  }
-
   if( head->data == ele){
     if( head->next == NULL){
       head = NULL;

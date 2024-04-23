@@ -145,11 +145,6 @@ void delete_ele(struct node* head, int ele){
 
   if( head==NULL ) return ;
 
-  if( head->next == NULL) {
-    head = NULL ;
-    return;
-  }
-
   if( head->data == ele){
     if( head->next == NULL){
       head = NULL;
@@ -174,9 +169,54 @@ void delete_ele(struct node* head, int ele){
   head->next = head->next->next;
   temp->next = NULL;
   free(temp);
-
-
+  
 }
+
+
+// void delete_ele_recursive(struct node* head, int ele){
+
+//   if( head == NULL) return;
+
+//   if( head->data == ele){
+//     if( head->next == NULL){
+//       head = NULL;
+//       free(head);
+//       return;
+//     }
+//     struct node * temp = head->next;
+//     head->data = temp->data;
+//     head->next = temp->next;
+
+//     temp->next = NULL;
+//     free(temp);
+//     return;
+//   }
+  
+//   delete_ele_recursive(head->next, ele);
+// }
+
+
+struct node* recursiveDeleteNode(struct node* head, int key) {
+    // Base case: empty list
+    if (head == NULL) {
+        return head;
+    }
+
+    // If the node to be deleted is the head node
+    if (head->data == key) {
+        struct node* temp = head;
+        head = head->next;
+        free(temp);
+        return head;
+    }
+
+    // Recursively delete the node in the rest of the list
+    head->next = recursiveDeleteNode(head->next, key);
+
+    return head;
+}
+
+
 
 
 
@@ -208,7 +248,8 @@ int main() {
 
   print_ll(head);
   printf("\n");
-  delete_ele(head, 999);
+  head = recursiveDeleteNode(head, 1);
   print_ll(head);
   return 0;
+  
 }
