@@ -182,67 +182,6 @@ void delete_ele(struct node* head, int ele){
   }
 
   if( head->next == NULL) return;
-  List of 15 binary search tree (BST) practice questions:
-  List of 15 binary search tree (BST) practice questions:
-
-  1. Insert a Node 🌳: Insert a node into a BST.
-
-  2. Search for a Value 🔍: Search for a value in a BST.
-
-  3. Delete a Node ❌: Delete a node from a BST.
-
-  4. Find Minimum 📉: Find the minimum value in a BST.
-
-  5. Find Maximum 📈: Find the maximum value in a BST.
-
-  6. Height of BST 📏: Calculate the height of a BST.
-
-  7. Inorder Traversal ➡️: Perform an inorder traversal of a BST.
-
-  8. Check BST ✅: Check if a binary tree is a BST.
-
-  9. Lowest Common Ancestor 👥: Find the lowest common ancestor of two nodes in a BST.
-
-  10. Kth Smallest Element 🏅: Find the kth smallest element in a BST.
-
-  11. Balanced BST ⚖️: Check if a BST is balanced.
-
-  12. Path Sum 💸: Determine if there's a root-to-leaf path with a given sum in a BST.
-
-  13. Sorted Array to BST 🔄: Convert a sorted array into a height-balanced BST.
-
-  14. BST Iterator 🔁: Implement a BST iterator.
-
-  15. Merge BSTs 🤝: Merge two BSTs into one.
-  1. Insert a Node 🌳: Insert a node into a BST.
-
-  2. Search for a Value 🔍: Search for a value in a BST.
-
-  3. Delete a Node ❌: Delete a node from a BST.
-
-  4. Find Minimum 📉: Find the minimum value in a BST.
-
-  5. Find Maximum 📈: Find the maximum value in a BST.
-
-  6. Height of BST 📏: Calculate the height of a BST.
-
-  7. Inorder Traversal ➡️: Perform an inorder traversal of a BST.
-
-  8. Check BST ✅: Check if a binary tree is a BST.
-
-  9. Lowest Common Ancestor 👥: Find the lowest common ancestor of two nodes in a BST.
-
-  10. Kth Smallest Element 🏅: Find the kth smallest element in a BST.
-
-  11. Balanced BST ⚖️: Check if a BST is balanced.
-
-  12. Path Sum 💸: Determine if there's a root-to-leaf path with a given sum in a BST.
-
-  13. Sorted Array to BST 🔄: Convert a sorted array into a height-balanced BST.
-
-  14. BST Iterator 🔁: Implement a BST iterator.
-
-  15. Merge BSTs 🤝: Merge two BSTs into one.
   struct node * temp = head->next;
   head->next = head->next->next;
   temp->next = NULL;
