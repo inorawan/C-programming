@@ -10,7 +10,7 @@ struct node {
 struct node * create_ll( ){
 
   int arr[18] = {1,2,3,4,5,6,7,8,9,10,11,89,100,101,102,103,104,105};
-  int n = 10;
+  int n = 11;
   struct node  head ;
   head.next = NULL;
   struct node * temp = &head;
@@ -107,7 +107,25 @@ void insert_at_anyplace(struct node* head, int ele, int x ){
   }
 
   if( temp == NULL) return;
+  struct node* deleteNode(struct node* head, int key) {
+      // Base case: empty list
+      if (head == NULL) {
+          return head;
+      }
 
+      // If the node to be deleted is the head node
+      if (head->data == key) {
+          struct node* temp = head;
+          head = head->next;
+          free(temp);
+          return head;
+      }
+
+      // Recursively delete the node in the rest of the list
+      head->next = deleteNode(head->next, key);
+
+      return head;
+  }
   struct node * new_node = (struct node *) malloc( sizeof( struct node));
   if( new_node == NULL)
      return ;
@@ -164,12 +182,73 @@ void delete_ele(struct node* head, int ele){
   }
 
   if( head->next == NULL) return;
+  List of 15 binary search tree (BST) practice questions:
+  List of 15 binary search tree (BST) practice questions:
 
+  1. Insert a Node 🌳: Insert a node into a BST.
+
+  2. Search for a Value 🔍: Search for a value in a BST.
+
+  3. Delete a Node ❌: Delete a node from a BST.
+
+  4. Find Minimum 📉: Find the minimum value in a BST.
+
+  5. Find Maximum 📈: Find the maximum value in a BST.
+
+  6. Height of BST 📏: Calculate the height of a BST.
+
+  7. Inorder Traversal ➡️: Perform an inorder traversal of a BST.
+
+  8. Check BST ✅: Check if a binary tree is a BST.
+
+  9. Lowest Common Ancestor 👥: Find the lowest common ancestor of two nodes in a BST.
+
+  10. Kth Smallest Element 🏅: Find the kth smallest element in a BST.
+
+  11. Balanced BST ⚖️: Check if a BST is balanced.
+
+  12. Path Sum 💸: Determine if there's a root-to-leaf path with a given sum in a BST.
+
+  13. Sorted Array to BST 🔄: Convert a sorted array into a height-balanced BST.
+
+  14. BST Iterator 🔁: Implement a BST iterator.
+
+  15. Merge BSTs 🤝: Merge two BSTs into one.
+  1. Insert a Node 🌳: Insert a node into a BST.
+
+  2. Search for a Value 🔍: Search for a value in a BST.
+
+  3. Delete a Node ❌: Delete a node from a BST.
+
+  4. Find Minimum 📉: Find the minimum value in a BST.
+
+  5. Find Maximum 📈: Find the maximum value in a BST.
+
+  6. Height of BST 📏: Calculate the height of a BST.
+
+  7. Inorder Traversal ➡️: Perform an inorder traversal of a BST.
+
+  8. Check BST ✅: Check if a binary tree is a BST.
+
+  9. Lowest Common Ancestor 👥: Find the lowest common ancestor of two nodes in a BST.
+
+  10. Kth Smallest Element 🏅: Find the kth smallest element in a BST.
+
+  11. Balanced BST ⚖️: Check if a BST is balanced.
+
+  12. Path Sum 💸: Determine if there's a root-to-leaf path with a given sum in a BST.
+
+  13. Sorted Array to BST 🔄: Convert a sorted array into a height-balanced BST.
+
+  14. BST Iterator 🔁: Implement a BST iterator.
+
+  15. Merge BSTs 🤝: Merge two BSTs into one.
   struct node * temp = head->next;
   head->next = head->next->next;
   temp->next = NULL;
   free(temp);
-  
+
+
 }
 
 
@@ -203,6 +282,7 @@ struct node* recursiveDeleteNode(struct node* head, int key) {
     }
 
     // If the node to be deleted is the head node
+  
     if (head->data == key) {
         struct node* temp = head;
         head = head->next;
@@ -214,10 +294,58 @@ struct node* recursiveDeleteNode(struct node* head, int key) {
     head->next = recursiveDeleteNode(head->next, key);
 
     return head;
+  
 }
 
+int findMiddle(struct node* head){
 
+  if( head == NULL) return -1;
 
+  struct node * slow = head, * fast = head->next;
+  while( fast != NULL && fast->next != NULL){
+    slow = slow->next;
+    fast = fast->next->next;
+  }
+  return slow->data;
+  
+}
+
+struct node* recursiveFindMiddle(struct node* head ,  struct node * fast){
+
+  if( head == NULL) return NULL;
+
+  if( head->next == NULL) return head;
+  
+  if( fast!=NULL && fast->next !=  NULL )
+      return recursiveFindMiddle(head->next, fast->next->next);
+
+  return head;
+}
+
+struct node* reversell(struct node* head){
+
+  if( head == NULL) return NULL;  
+  struct node * prev = NULL, * curr = head, * next;
+  while( curr != NULL){
+    next = curr->next;
+    curr->next = prev;
+    prev = curr;
+    curr = next;
+    
+  }
+  return prev;
+}
+
+struct node* recursiveReversell(struct node* head){
+
+  if( head == NULL) return NULL;
+  if( head->next == NULL) return head;
+  struct node * new_head = recursiveReversell(head->next);
+  head->next->next = head;
+  head->next = NULL;
+  return new_head;
+  
+}
 
 
 int main() {
@@ -243,12 +371,24 @@ int main() {
   // else 
   //   printf( "%d---->>", ans->data);
 
-  insert_at_anyplace_recursive(head, 1,999);
+  insert_at_anyplace_recursive(head, 10,999);
 
 
+  // print_ll(head);
+  // printf("\n");
+  
+  // head = recursiveDeleteNode(head, 10);
+  // print_ll(head);
+  // delete_ele(head, 999);
+  // printf("\n");
   print_ll(head);
   printf("\n");
-  head = recursiveDeleteNode(head, 1);
+  printf("%d",recursiveFindMiddle(head, head)->data);
+  head = reversell(head);
+  printf( "\n");
+  print_ll(head);
+  head = recursiveReversell(head);
+  printf("\n\n\n");
   print_ll(head);
   return 0;
   
